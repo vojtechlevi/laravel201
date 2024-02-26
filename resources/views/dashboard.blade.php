@@ -7,10 +7,10 @@
         @foreach ($cars as $car)
             <li>
 
-                <p>{{ $cars->model }}</p>
-                <p>{{ $cars->manufacturer }}</p>
-                <p>{{ $cars->year }}</p>
-                {{ $cars->fueltype }}
+                <p>{{ $car->model }}</p>
+                <p>{{ $car->manufacturer }}</p>
+                <p>{{ $car->year }}</p>
+                {{ $car->fueltype }}
 
             </li>
         @endforeach

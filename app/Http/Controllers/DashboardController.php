@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\CarModel;
+use App\Models\Cars;
 
 class DashboardController extends Controller
 {
@@ -17,7 +17,7 @@ class DashboardController extends Controller
         $name = $user->name;
 
         // Create a new car model
-        $carModel = CarModel::create([
+        $carModel = Cars::create([
             'model' => 'Model X',
             'manufacturer' => 'Tesla',
             'year' => 2022,
@@ -25,7 +25,7 @@ class DashboardController extends Controller
         ]);
 
         // Retrieve car models
-        $carModels = CarModel::all();
+        $carModels = Cars::all();
 
 
 

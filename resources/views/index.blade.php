@@ -1,3 +1,4 @@
+@include('errors')<!-- Om vi får error visas de här -->
 <form method="post" action="/login">
 
     @csrf

@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class CarModel extends Model
+class Cars extends Model
 {
     use HasFactory;
 
@@ -20,4 +21,9 @@ class CarModel extends Model
         'year',
         'fueltype',
     ];
+
+    public function Users(): BelongsTo
+    {
+        return $this->hasOne[User::class];
+    }
 }

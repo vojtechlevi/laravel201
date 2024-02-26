@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LogOutController;
-use App\Http\Controllers\CreateTaskController;
-use App\Http\Controllers\CompleteTaskController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +18,15 @@ use App\Http\Controllers\CompleteTaskController;
 */
 
 Route::view('/', 'index')->name('login');
-
-Route::post('login', DashboardController::class)->middleware('auth');
+Route::post('login', LoginController::class);
+//Route::post('login', LoginController::class)->middleware('guest');
 Route::get('/register', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register');
-Route::get('/dashboard', 'App\Http\Controller\Auth\DashboardController');
+Route::get('dashboard', DashboardController::class)->middleware('auth');
 
 Route::get('/logout', [LogoutController::class, 'logout']);
+
+
+
+
+
