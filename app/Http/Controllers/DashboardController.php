@@ -16,14 +16,6 @@ class DashboardController extends Controller
         // Get the name of the currently authenticated user from the database
         $name = $user->name;
 
-        // Create a new car model
-        $carModel = Cars::create([
-            'model' => 'Model X',
-            'manufacturer' => 'Tesla',
-            'year' => 2022,
-            'fueltype' => 'Electric',
-        ]);
-
         // Retrieve car models
         $carModels = Cars::all();
 

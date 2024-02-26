@@ -22,8 +22,8 @@ class Cars extends Model
         'fueltype',
     ];
 
-    public function Users(): BelongsTo
+    public function Users(): BelongsTo // En bil kan bara ha 1 user
     {
-        return $this->hasOne[User::class];
+        return $this->belongsTo(User::class);
     }
 }

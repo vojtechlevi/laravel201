@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\LogOutController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\CreateCarController;
 
 
 /*
@@ -17,14 +18,15 @@ use App\Http\Controllers\LogOutController;
 |
 */
 
-Route::view('/', 'index')->name('login');
+Route::view('/', 'index')->name('login')->middleware('guest');
+//Route::post('login', LoginController::class);
 Route::post('login', LoginController::class);
-//Route::post('login', LoginController::class)->middleware('guest');
+Route::get('logout', LogoutController::class);
+Route::get('dashboard', DashboardController::class)->middleware('auth');
+Route::middleware(['auth'])->post('/cars', CreateCarController::class)->name('cars.store');
 Route::get('/register', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register');
-Route::get('dashboard', DashboardController::class)->middleware('auth');
 
-Route::get('/logout', [LogoutController::class, 'logout']);
 
 
 

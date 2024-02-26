@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LogOutController extends Controller
 {
-    public function logout()
+    public function __invoke()
     {
         Auth::logout();//logs the user out
         return redirect('/');//redirects to the index, its where the user log in from the :

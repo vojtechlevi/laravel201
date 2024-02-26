@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
-            $table->text('model'); //bilmärke
+            $table->string('model'); //bilmärke
             $table->string('manufacturer'); // tillverkare
             $table->unsignedInteger('year'); //årsmodell
             $table->string('fueltype'); // El, Bensin, Disel
+            $table->unsignedBigInteger('userId'); // vilken user är det som har bilen?
             $table->timestamps();
+            $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
