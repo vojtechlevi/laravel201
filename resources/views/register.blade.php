@@ -1,7 +1,7 @@
-<form method="POST" action="{{ route('register') }}">
+<form method="post" action="{{ route('register') }}">
     @csrf
 
-    <!-- Your registration form fields -->
+    @include('errors')
     <input type="text" name="name" placeholder="Name">
     <input type="email" name="email" placeholder="Email">
     <input type="password" name="password" placeholder="Password">
