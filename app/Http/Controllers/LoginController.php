@@ -5,20 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class loginController extends Controller
+class LoginController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $email = $request->input('email');
-        $password = $request->input('password');
+        $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
+            // Redirect authenticated users to the dashboard
             return redirect()->intended('/dashboard');
         } else {
-            echo 'Whoops! Please try to login again.';
-            return redirect()->intended('welcome');
+            return redirect()->back()->with('error', 'Invalid credentials.');
         }
     }
 }
