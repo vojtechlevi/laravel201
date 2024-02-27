@@ -1,11 +1,16 @@
-<form method="post" action="{{ route('register') }}">
-    @csrf
+@vite('resources/css/app.css')
+<div class=" bg-slate-100 h-full flex justify-center items-center">
+    <div class="bg-slate-300 w-3/6 h-96 p-5 rounded-xl relative">
+        <form method="post" action="{{ route('register') }}">
+            @csrf
 
-    @include('errors')
-    <input type="text" name="name" placeholder="Name">
-    <input type="email" name="email" placeholder="Email">
-    <input type="password" name="password" placeholder="Password">
-    <input type="password" name="password_confirmation" placeholder="Confirm Password">
+            @include('errors')
+            <input class=" p-2 mt-2 rounded-lg w-full" type="text" name="name" placeholder="Name">
+            <input class=" p-2 mt-5 rounded-lg w-full" type="email" name="email" placeholder="Email">
+            <input class=" p-2 mt-5 rounded-lg w-full" type="password" name="password" placeholder="Password">
+            <input class=" p-2 mt-5 rounded-lg w-full" type="password" name="password_confirmation" placeholder="Confirm Password">
 
-    <button type="submit">Register</button>
-</form>
+            <button class=" bg-blue-400 text-white px-4 py-2 mt-5 rounded-lg" type="submit">Register</button>
+        </form>
+    </div>
+</div>
