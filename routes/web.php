@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Car;
-use App\Http\Controllers\CarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +13,6 @@ use App\Http\Controllers\CarController;
 |
 */
 
-Route::get('/', [CarController::class, 'index']);
-Route::get('/create', [CarController::class, 'cars.create']);
-
-
-Route::resource('cars', CarController::class);
+Route::get('/', function () {
+    return view('welcome');
+});
