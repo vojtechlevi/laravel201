@@ -15,6 +15,19 @@
         <p>{{ $car->year }}</p>
         {{ $car->fueltype }}
 
+        <form action="/remove" method="post"><!--remove the car from the db -->
+        @csrf <!-- CSRF protection -->
+            <input type="hidden" name="id" value="{{ $car->id }}">
+            <button type="submit" name="{{ $car->id }}" value="{{ $car->id }}">Remove Car</button>
+        </form>
+
+        <form action="/update" method="post">
+        @csrf <!-- CSRF protection -->
+        @method('post')
+            <input type="hidden" name="id" value="{{ $car->id }}">
+            <button type="submit" name="{{ $car->id }}">Change Car data</button>
+        </form>
+
     </li>
     @endforeach
     @endif
