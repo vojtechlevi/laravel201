@@ -8,6 +8,7 @@ use App\Http\Controllers\CreateCarController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\RemoveCarController;
 use App\Http\Controllers\UpdateCarDataController;
+use App\Http\Controllers\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +25,12 @@ Route::view('/', 'index')->name('login')->middleware('guest');
 Route::post('login', LoginController::class);
 Route::get('logout', LogoutController::class);
 Route::get('dashboard', DashboardController::class)->middleware('auth');
-/* Route::get('/add/{name}', function($name){
-    return view('add', ['name' => $name]);
-}); */
 Route::get('add', function() {
     return view('add');
 });
+Route::get('account', [AccountController::class, 'accesAccount'])->name('accesAccount');
+Route::post('account', [AccountController::class, 'updateAccount'])->name('updateAccount');
+Route::post('removeAccount', [AccountController::class, 'removeAccount'])->name('removeAccount');
 
 // handle the adding of a car
 Route::middleware(['auth'])->post('/cars', CreateCarController::class)->name('cars.store');

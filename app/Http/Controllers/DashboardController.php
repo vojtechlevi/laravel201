@@ -14,6 +14,7 @@ class DashboardController extends Controller
         $user = Auth::user();
         //store the user in a sessionvariable
         session(['user_name' => Auth::user()->name]);
+        session(['user' => $user]);
         // Get the name of the currently authenticated user from the database
         $name = $user->name;
 
