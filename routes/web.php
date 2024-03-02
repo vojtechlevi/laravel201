@@ -19,20 +19,26 @@ use App\Http\Controllers\UpdateCarDataController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::view('/', 'index')->name('login')->middleware('guest'); //startpage, takes user to login
-//Route::post('login', LoginController::class);
-Route::post('login', LoginController::class); //login page, if succesful login takes user to dashboard
+// handle the login,logout, and redirections of a user
+Route::view('/', 'index')->name('login')->middleware('guest');
+Route::post('login', LoginController::class);
 Route::get('logout', LogoutController::class);
-Route::get('dashboard', DashboardController::class)->middleware('auth'); //dashboardpage, where user can see and add cars
-Route::middleware(['auth'])->post('/cars', CreateCarController::class)->name('cars.store'); //when adding a car it goes via this controller route
+Route::get('dashboard', DashboardController::class)->middleware('auth');
+/* Route::get('/add/{name}', function($name){
+    return view('add', ['name' => $name]);
+}); */
+Route::get('add', function() {
+    return view('add');
+});
+
+// handle the adding of a car
+Route::middleware(['auth'])->post('/cars', CreateCarController::class)->name('cars.store');
 
 //handle the removal of a users car
 Route::post('/remove', [RemoveCarController::class, 'Remove']);
 
 //handle the update form
 Route::post('/update', [UpdateCarDataController::class, 'Update'])->name('update');
-//Route::post('/update', [UpdateCarDataController::class, 'Update']);
 Route::post('/edit', [UpdateCarDataController::class, 'Edit'])->name('edit');
 
 // Show registration form
