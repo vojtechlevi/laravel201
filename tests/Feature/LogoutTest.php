@@ -24,7 +24,7 @@ class LogoutTest extends TestCase
         $this->actingAs($user);
 
        //try to log out the user
-        $response = $this->post('logout');
+        $response = $this->get('logout');
 
         // check to see that the "user" gets redireted to the login page
         $response->assertRedirect('/');
