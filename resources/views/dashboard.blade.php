@@ -5,16 +5,12 @@
 
 
     <div class="bg-slate-300 w-full md:w-3/6 h-auto p-5 rounded-xl relative">
-        <!-- FLYTTAT TILL NAVBAR?
-            <h1 class=" text-green-400">
-            {{ 'Hello '.$name.'!' }}
-        </h1> -->
+
         <div class="flex justify-center">
             <button id="toggleCarsBtn" class="bg-blue-400 hover:bg-blue-600 text-white px-4 py-2 mb-5 rounded-lg">Load Cars</button><!--changed mt-5 to mb-5 -->
         </div>
 
         <div class="flex flex-wrap" id="carList" style="display: none;">
-           <!--  <h2>Cars:</h2>  WE DONT NEED THIS? REMOVE?-->
                 @if ($cars)
                     @foreach ($cars as $car)
                         <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-2">
@@ -45,34 +41,10 @@
             </div>
 
 
-
-<!-- FLYTTAT TILL EGEN PAGE?
-
-        <form method="post" action="{{ route('cars.store') }}">
-            @csrf
-            <div class="form-group">
-                <label for="model">Carmodel:</label>
-                <input type="string" id="model" name="model" class="form-control p-2 mt-2 rounded-lg w-full" placeholder="ex: Model X">
-                <label for="manufacturer">Manufacterer:</label>
-                <input type="string" id="manufacturer" name="manufacturer" class="form-control p-2 mt-2 rounded-lg w-full" placeholder="ex: Tesla">
-                <label for="year">Year:</label>
-                <input type="int" id="year" name="year" class="form-control p-2 mt-2 rounded-lg w-full" placeholder="ex: 2020">
-                <label for="fueltype">Fuel:</label>
-                <input type="string" id="fueltype" name="fueltype" class="form-control p-2 mt-2 rounded-lg w-full" placeholder="ex: Electric">
-            </div>
-            <button type="submit" class="bg-blue-400 text-white px-4 py-2 mt-5 rounded-lg btn btn-primary">Submit</button>
-        </form>
--->
-
     </div>
 
 </div>
-<!-- FLYTTAT TILL NAVBAR?
-<div class=" absolute bottom-5">
-    <a href="/logout">
-    <button class="bg-blue-400 text-white px-4 py-2 mt-5 rounded-lg btn btn-primary">Log out</button>
-    </a>
-</div> -->
+
 <script>
     let showCarBtn = document.getElementById('toggleCarsBtn');
     showCarBtn.addEventListener('click', function() {

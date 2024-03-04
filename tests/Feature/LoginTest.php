@@ -21,48 +21,31 @@ class LoginTest extends TestCase
 
     public function test_login_user(): void
     {
+        //create a new user instance
         $user = new User();
-        $user->name = "Test Testsson";
+        $user->name = "Test Testsson";//and assign it some test values
         $user->email = "example@yrgo.se";
         $user->password = Hash::make('123');
         $user->save();
-        $response = $this->followingRedirects()->post('login', ['email' => 'example@yrgo.se', 'password' => '123',]);
-        $response->assertSeeText('Welcome Test Testsson!');
+        $response = $this->followingRedirects()->post('login', ['email' => 'example@yrgo.se', 'password' => '123',]);//try to post the credentials via the logincontroller
+        $response->assertSeeText('Welcome Test Testsson!');//check to see if the succes msg gets displayed
 
-        /* $testUser = User::create(['name' => 'Testperson', 'email' => 'testPerson@yrgo.se', 'password' => Hash::make('12345678')]);
-        $response = $this->post('login', [
-            'email' => $testUser->email,
-            'password' => '12345678',
-        ]);
-        $code = $this->followRedirects($response)->getStatusCode(); //get the statuscode of the redirection
-        $this->assertEquals(200, $code); //check to see if the statuscode we get back is equal to 200
-        $this->assertAuthenticatedAs($testUser);//assert that the authenticated user is our testuser
- */
-
-
-      /*   $user = User::create(['name' => 'Testperson', 'email' => 'testPerson@yrgo.se', 'password' => Hash::make('correct-password')]);
-        $response =$this->post('login', [
-            'email' => $user->email,
-            'password' => $user->password,
-        ]);
-        $code = $this->followRedirects($response)->getStatusCode();
-        $this->assertEquals(200, $code);
-        $this->assertAuthenticatedAs($user);
- */
     }
 
     public function test_login_user_without_password(): void
     {
+        //try to log in without password
         $response = $this
         ->followingRedirects()
         ->post('login', [
-            'email' => 'example@yrgo.se',
+            'email' => 'example@yrgo.se',//only email
         ]);
-        $response->assertSeeText('Invalid email or password. Please try again.');
+        $response->assertSeeText('Invalid email or password. Please try again.');//check to see if the error msg gets displayed
     }
 
-    public function test_guest_user(): void
+    public function test_user_with_incorrect_password(): void
     {
+        //create a test user
         $user = User::create(['name' => 'Testperson', 'email' => 'testPerson@yrgo.se', 'password' => Hash::make('correct-password')]);
         $response =$this->post('login', [
             'email' => $user->email,
@@ -70,7 +53,7 @@ class LoginTest extends TestCase
         ]);
         $code = $this->followRedirects($response)->getStatusCode();
         $this->assertEquals(200, $code);
-        $this->assertGuest(); 
+        $this->assertGuest();
     }
 
 }
