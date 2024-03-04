@@ -17,7 +17,7 @@ class LoginController extends Controller
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
 
-
+            //return redirect('dashboard');
             return redirect()->intended('/dashboard');//and send the now logged in user to the dashboard
         }
         else // if it didnt match any known user they get sent back to the login page with an error msg
