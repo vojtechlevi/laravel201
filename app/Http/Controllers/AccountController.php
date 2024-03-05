@@ -63,9 +63,8 @@ class AccountController extends Controller
         if ($userDB) {
             // delete the user
             $userDB->delete();
-            //we need to resett the autoincrement or else the next registred user gets id AFTER whatever the id of the deleted user was.
-            DB::statement("ALTER TABLE users AUTO_INCREMENT = $userId"); //this line we use in production and dev, but not for testing.
-            //DB::statement("UPDATE SQLITE_SEQUENCE SET SEQ= $userId WHERE name = 'users'");//this line is only for testing, since we use sqlite in testing and not mysql
+            //$userDB->destroy($userId); //eloqeunt method that also reset the prim key autoincrement
+            //$deleted = User::where('id', $userId)->delete();
 
             Auth::logout();
             Session::flash('success', 'Your account has been successfully removed.');

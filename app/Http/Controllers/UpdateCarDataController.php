@@ -12,7 +12,7 @@ class UpdateCarDataController extends Controller
      public function Update(Request $request)
     {
         $user = Auth::user();
-
+       
          //get the car from the database via the car id
          $car = Cars::find($request->input('id')); //use this in production, the other is for testing
          //$car = Cars::where('id', $request->input('id'))->first(); //this is only for testing, with sqlite syntax
