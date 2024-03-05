@@ -27,8 +27,8 @@ class RemoveCarController extends Controller
             $car->delete();
 
             // Reset the auto-increment value for the ID col to whatever id we removed
-            //DB::statement("ALTER TABLE cars AUTO_INCREMENT = $carId"); //this one we use in production, the other is sqlite syntax for testing
-            DB::statement("UPDATE SQLITE_SEQUENCE SET SEQ= $carId WHERE NAME='cars'"); //this one only for testing, since test use sqlite with another syntax
+            DB::statement("ALTER TABLE cars AUTO_INCREMENT = $carId"); //this one we use in production, the other is sqlite syntax for testing
+            //DB::statement("UPDATE SQLITE_SEQUENCE SET SEQ= $carId WHERE NAME='cars'"); //this one only for testing, since test use sqlite with another syntax
             if($carModels){
                 return redirect('dashboard')->with(['success' => 'Car removed successfully.', 'name' => $name, 'cars' => $carModels]);
             }

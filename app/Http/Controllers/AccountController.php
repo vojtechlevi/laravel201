@@ -59,13 +59,13 @@ class AccountController extends Controller
         $userDB = User::find($userId);//get the row from the DB to be deleted
 
 
-        //if there is a row in the user table with the same id then delete it. 
+        //if there is a row in the user table with the same id then delete it.
         if ($userDB) {
             // delete the user
             $userDB->delete();
             //we need to resett the autoincrement or else the next registred user gets id AFTER whatever the id of the deleted user was.
-            //DB::statement("ALTER TABLE users AUTO_INCREMENT = $userId"); //this line we use in production and dev, but not for testing.
-            DB::statement("UPDATE SQLITE_SEQUENCE SET SEQ= $userId WHERE name = 'users'");//this line is only for testing, since we use sqlite in testing and not mysql
+            DB::statement("ALTER TABLE users AUTO_INCREMENT = $userId"); //this line we use in production and dev, but not for testing.
+            //DB::statement("UPDATE SQLITE_SEQUENCE SET SEQ= $userId WHERE name = 'users'");//this line is only for testing, since we use sqlite in testing and not mysql
 
             Auth::logout();
             Session::flash('success', 'Your account has been successfully removed.');
