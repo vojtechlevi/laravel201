@@ -40,6 +40,8 @@ class DashboardTest extends TestCase
         foreach ($cars as $car) {
             $response->assertSee($car->model);
             $response->assertSee($car->manufacturer);
+            $response->assertSee($car->year);
+            $response->assertSee($car->fueltype);
         }
     }
 }
