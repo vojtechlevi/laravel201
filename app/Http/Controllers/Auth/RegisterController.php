@@ -18,23 +18,21 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
 
-        // Validate the form data
+        // get the data from the reg form
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        // Create a new user record
+        // add the data from the form into the user table as a new user
         $user = User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'password' => Hash::make($validatedData['password']),
         ]);
 
+        return redirect()->route('login')->with('success', 'Registration successful. Please log in.');
 
-
-        // Redirect to the dashboard or any other page
-        return redirect()->intended('login');
     }
 }

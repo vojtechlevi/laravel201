@@ -8,6 +8,7 @@ use App\Http\Controllers\CreateCarController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\RemoveCarController;
 use App\Http\Controllers\UpdateCarDataController;
+use App\Http\Controllers\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,20 +20,27 @@ use App\Http\Controllers\UpdateCarDataController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::view('/', 'index')->name('login')->middleware('guest'); //startpage, takes user to login
-//Route::post('login', LoginController::class);
-Route::post('login', LoginController::class); //login page, if succesful login takes user to dashboard
+// handle the login,logout
+Route::view('/', 'index')->name('login');
+Route::post('login', LoginController::class)->middleware('guest');
 Route::get('logout', LogoutController::class);
-Route::get('dashboard', DashboardController::class)->middleware('auth'); //dashboardpage, where user can see and add cars
-Route::middleware(['auth'])->post('/cars', CreateCarController::class)->name('cars.store'); //when adding a car it goes via this controller route
+Route::get('dashboard', DashboardController::class)->middleware('auth');
+//handle the account page actions
+Route::get('account', [AccountController::class, 'accesAccount'])->name('accesAccount');
+Route::post('account', [AccountController::class, 'updateAccount'])->name('updateAccount');
+Route::post('removeAccount', [AccountController::class, 'removeAccount'])->name('removeAccount');
+
+// handle the adding of a car
+Route::get('add', function() {
+    return view('add');
+});
+Route::middleware(['auth'])->post('/cars', CreateCarController::class)->name('cars.store');
 
 //handle the removal of a users car
 Route::post('/remove', [RemoveCarController::class, 'Remove']);
 
 //handle the update form
 Route::post('/update', [UpdateCarDataController::class, 'Update'])->name('update');
-//Route::post('/update', [UpdateCarDataController::class, 'Update']);
 Route::post('/edit', [UpdateCarDataController::class, 'Edit'])->name('edit');
 
 // Show registration form

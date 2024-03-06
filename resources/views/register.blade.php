@@ -10,7 +10,9 @@
             <input class=" p-2 mt-5 rounded-lg w-full" type="password" name="password" placeholder="Password">
             <input class=" p-2 mt-5 rounded-lg w-full" type="password" name="password_confirmation" placeholder="Confirm Password">
 
-            <button class=" bg-blue-400 text-white px-4 py-2 mt-5 rounded-lg" type="submit">Register</button>
+            <button class=" bg-blue-400 hover:bg-blue-600 text-white px-4 py-2 mt-5 rounded-lg" type="submit">Register</button>
+
         </form>
+        <a href="/" class="text-white px-4 mt-5 hover:text-blue-600"><--Go back</a>
     </div>
 </div>

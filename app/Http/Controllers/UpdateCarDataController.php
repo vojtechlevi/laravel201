@@ -14,7 +14,8 @@ class UpdateCarDataController extends Controller
         $user = Auth::user();
 
          //get the car from the database via the car id
-         $car = Cars::find($request->input('id'));
+         $car = Cars::find($request->input('id')); //use this in production, the other is for testing
+         //$car = Cars::where('id', $request->input('id'))->first(); //this is only for testing, with sqlite syntax
 
         if ($car)
         {
@@ -53,7 +54,7 @@ class UpdateCarDataController extends Controller
 
         $name = $user->name;
         // Retrieve car models
-        $carModels = Cars::all();
+        $carModels = Cars::where('userId', Auth::id())->get();
 
         //redirect back to dahsboard
         return redirect('dashboard')->with(['success' => 'Car removed successfully.', 'name' => $name, 'cars' => $carModels]);
