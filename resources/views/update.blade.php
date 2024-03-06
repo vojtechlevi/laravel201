@@ -12,14 +12,18 @@
 
                 <input type="hidden" name="id" value="{{ $car->id }}">
                 <label for="model">Carmodel:</label>
-                <input type="string" id="model" name="model" class="form-control p-2 mt-2 rounded-lg w-full" placeholder="{{ $car->model }}">
+                <input type="string" id="model" name="model" class="form-control p-2 mt-2 rounded-lg w-full" placeholder="{{ $car->model }}" required>
                 <label for="manufacturer">Manufacterer:</label>
-                <input type="string" id="manufacturer" name="manufacturer" class="form-control p-2 mt-2 rounded-lg w-full" placeholder="{{ $car->manufacturer }}">
+                <input type="string" id="manufacturer" name="manufacturer" class="form-control p-2 mt-2 rounded-lg w-full" placeholder="{{ $car->manufacturer }}" required>
                 <label for="year">Year:</label>
-                <input type="int" id="year" name="year" class="form-control p-2 mt-2 rounded-lg w-full" placeholder="{{ $car->year }}">
+                <input type="int" id="year" name="year" class="form-control p-2 mt-2 rounded-lg w-full" placeholder="{{ $car->year }}" required>
                 <label for="fueltype">Fuel:</label>
-                <input type="string" id="fueltype" name="fueltype" class="form-control p-2 mt-2 rounded-lg w-full" placeholder="{{ $car->fueltype }}">
+                <input type="string" id="fueltype" name="fueltype" class="form-control p-2 mt-2 rounded-lg w-full" placeholder="{{ $car->fueltype }}" required>
             </div>
             <button type="submit" class="bg-blue-400 hover:bg-blue-600 text-white px-4 py-2 mt-5 mb-5 rounded-lg btn btn-primary">Submit</button>
 
         </form>
+       <!--  php artisan config:clear
+        php artisan config:cache
+        php artisan cache:clear
+        php artisan route:clear  -->

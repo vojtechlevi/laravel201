@@ -20,19 +20,20 @@ use App\Http\Controllers\AccountController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-// handle the login,logout, and redirections of a user
+// handle the login,logout
 Route::view('/', 'index')->name('login');
 Route::post('login', LoginController::class)->middleware('guest');
 Route::get('logout', LogoutController::class);
 Route::get('dashboard', DashboardController::class)->middleware('auth');
-Route::get('add', function() {
-    return view('add');
-});
+//handle the account page actions
 Route::get('account', [AccountController::class, 'accesAccount'])->name('accesAccount');
 Route::post('account', [AccountController::class, 'updateAccount'])->name('updateAccount');
 Route::post('removeAccount', [AccountController::class, 'removeAccount'])->name('removeAccount');
 
 // handle the adding of a car
+Route::get('add', function() {
+    return view('add');
+});
 Route::middleware(['auth'])->post('/cars', CreateCarController::class)->name('cars.store');
 
 //handle the removal of a users car

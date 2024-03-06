@@ -15,13 +15,13 @@
                     @foreach ($cars as $car)
                         <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-2">
                             <div class="bg-white h-full rounded-lg shadow-md p-4">
-                                <div class="h-3/6">
+                                <div class="h-3/6"><!-- take half the available space always-->
                                     <p><strong>Model:</strong> {{ $car->model }}</p>
                                     <p><strong>Manufacturer:</strong> {{ $car->manufacturer }}</p>
                                     <p><strong>Year:</strong> {{ $car->year }}</p>
                                     <p><strong>Fuel Type:</strong> {{ $car->fueltype }}</p>
                                 </div>
-                                <div class="h-3/6">
+                                <div class="h-3/6"><!-- the rest of the space for the buttons -->
                                     <!--updata cardata in the db -->
                                     <form action="/update" method="post">
                                         @csrf <!-- CSRF protection -->
@@ -49,10 +49,10 @@
 </div>
 
 <script>
-    let showCarBtn = document.getElementById('toggleCarsBtn');
-    showCarBtn.addEventListener('click', function() {
-        const carList = document.getElementById('carList');
-        carList.classList.toggle('show');
+    let showCarBtn = document.getElementById('toggleCarsBtn');//get the load cars button
+    showCarBtn.addEventListener('click', function() {//when the user clicks the button
+        const carList = document.getElementById('carList');//show the users cars
+        carList.classList.toggle('show');//by toggling the show class
         if(carList.classList.contains('show')){
             showCarBtn.innerText = "Hide Cars";
         }else{
