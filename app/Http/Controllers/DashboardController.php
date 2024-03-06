@@ -19,7 +19,8 @@ class DashboardController extends Controller
         $name = $user->name;
 
         // Retrieve car models
-        $carModels = Cars::all();
+        //$carModels = Cars::all();//remove, this loads all cars even if the logged in user doesnt have any cars
+        $carModels = Cars::where('userId', Auth::id())->get(); //try to only load the cars of the logged in user
 
 
 

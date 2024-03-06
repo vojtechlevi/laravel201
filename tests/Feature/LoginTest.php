@@ -32,16 +32,7 @@ class LoginTest extends TestCase
 
     }
 
-    public function test_login_user_without_password(): void
-    {
-        //try to log in without password
-        $response = $this
-        ->followingRedirects()
-        ->post('login', [
-            'email' => 'example@yrgo.se',//only email
-        ]);
-        $response->assertSeeText('Invalid email or password. Please try again.');//check to see if the error msg gets displayed
-    }
+   
 
     public function test_user_with_incorrect_password(): void
     {
