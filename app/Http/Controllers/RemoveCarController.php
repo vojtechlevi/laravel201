@@ -24,8 +24,9 @@ class RemoveCarController extends Controller
         $carModels = Cars::all();
 
         if ($car) { //if the car exists in the database, then remove it
-            //$car->delete();
-            $car::truncate();//the truncate method is a eloquent method that also resets the autoincrement prim key
+            $car->delete();
+            //$car->destroy($carId);
+            //$car::truncate($carId);//the truncate method is a eloquent method that also resets the autoincrement prim key
             // Reset the auto-increment value for the ID col to whatever id we removed
             //DB::statement("ALTER TABLE cars AUTO_INCREMENT = $carId"); //this one we use in production, the other is sqlite syntax for testing
             //DB::statement("UPDATE SQLITE_SEQUENCE SET SEQ= $carId WHERE NAME='cars'"); //this one only for testing, since test use sqlite with another syntax
