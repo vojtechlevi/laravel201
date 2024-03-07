@@ -5,7 +5,7 @@
 
 
     <div class="bg-slate-300 w-full md:w-3/6 h-auto p-5 rounded-xl relative">
-
+    @include('succes')
         <div class="flex justify-center">
             <button id="toggleCarsBtn" class="bg-blue-400 hover:bg-blue-600 text-white px-4 py-2 mb-5 rounded-lg">Load Cars</button><!--changed mt-5 to mb-5 -->
         </div>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cars;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+
 
 
 class RemoveCarController extends Controller
@@ -25,11 +25,6 @@ class RemoveCarController extends Controller
 
         if ($car) { //if the car exists in the database, then remove it
             $car->delete();
-            //$car->destroy($carId);
-            //$car::truncate($carId);//the truncate method is a eloquent method that also resets the autoincrement prim key
-            // Reset the auto-increment value for the ID col to whatever id we removed
-            //DB::statement("ALTER TABLE cars AUTO_INCREMENT = $carId"); //this one we use in production, the other is sqlite syntax for testing
-            //DB::statement("UPDATE SQLITE_SEQUENCE SET SEQ= $carId WHERE NAME='cars'"); //this one only for testing, since test use sqlite with another syntax
 
             if($carModels){
                 return redirect('dashboard')->with(['success' => 'Car removed successfully.', 'name' => $name, 'cars' => $carModels]);

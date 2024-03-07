@@ -2,7 +2,7 @@
 @include('nav')
 <div class=" bg-slate-100 h-full flex justify-center items-center"><!-- Background div -->
 @include('errors')
-
+@include('succes')
 <div class="bg-slate-300 w-full md:w-3/6 h-auto p-5 rounded-xl relative">
     <form method="post" action="{{ route('cars.store') }}"> <!-- Go via the Carcontroller to validate the new car -->
     @csrf

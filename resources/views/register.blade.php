@@ -5,6 +5,7 @@
             @csrf
 
             @include('errors')
+            @include('succes')
             <input class=" p-2 mt-2 rounded-lg w-full" type="text" name="name" placeholder="Name">
             <input class=" p-2 mt-5 rounded-lg w-full" type="email" name="email" placeholder="Email">
             <input class=" p-2 mt-5 rounded-lg w-full" type="password" name="password" placeholder="Password">

@@ -1,8 +1,8 @@
 @vite('resources/css/app.css')
 @include('nav')
 <div class=" bg-slate-100 h-full flex justify-center items-center"><!-- Background div -->
-@include('errors')
-
+@include('errors')<!-- include error messages if there are any -->
+@include('succes')<!-- include succes messages if there are any -->
 <div class="bg-slate-300 w-full md:w-3/6 h-auto p-5 rounded-xl relative">
 
         <h1 class="text-3x1 font-bold text-center text-gray-900 mt-8 mb-4">Update the car details of your {{$car->model}}</h1>
@@ -23,7 +23,4 @@
             <button type="submit" class="bg-blue-400 hover:bg-blue-600 text-white px-4 py-2 mt-5 mb-5 rounded-lg btn btn-primary">Submit</button>
 
         </form>
-       <!--  php artisan config:clear
-        php artisan config:cache
-        php artisan cache:clear
-        php artisan route:clear  -->
+       

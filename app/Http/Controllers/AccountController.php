@@ -63,9 +63,7 @@ class AccountController extends Controller
         if ($userDB) {
             // delete the user
             $userDB->delete();
-            //$userDB->destroy($userId); //eloqeunt method that also reset the prim key autoincrement
-            //$deleted = User::where('id', $userId)->delete();
-
+            
             Auth::logout();
             Session::flash('success', 'Your account has been successfully removed.');
 

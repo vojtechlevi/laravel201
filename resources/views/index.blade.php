@@ -10,8 +10,7 @@
     @if (session('message'))
             <div id="flash-message-logout" class="text-green-500 alert alert-success">{{ session('message') }}</div><!-- user msg's -->
     @endif
-
-
+    
         <form method="post" action="/login">
             @csrf
             <input class=" p-2 mt-2 rounded-lg w-full" name="email" id="email" type="email" placeholder="Email" />
