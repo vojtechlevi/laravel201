@@ -7,15 +7,15 @@
     <form method="post" action="{{ route('cars.store') }}"> <!-- Go via the Carcontroller to validate the new car -->
     @csrf
         <div class="form-group">
-            <label for="model">Carmodel:</label>
-            <input type="string" id="model" name="model" class="form-control p-2 mt-2 rounded-lg w-full" placeholder="ex: Model X">
-            <label for="manufacturer">Manufacterer:</label>
-            <input type="string" id="manufacturer" name="manufacturer" class="form-control p-2 mt-2 rounded-lg w-full" placeholder="ex: Tesla">
-            <label for="year">Year:</label>
-            <input type="int" id="year" name="year" class="form-control p-2 mt-2 rounded-lg w-full" placeholder="ex: 2020">
-            <label for="fueltype">Fuel:</label>
-            <input type="string" id="fueltype" name="fueltype" class="form-control p-2 mt-2 rounded-lg w-full" placeholder="ex: Electric">
+            <label for="model" class="text-3xl sm:text-4xl md:text-3xl lg:text-2xl">Carmodel:</label>
+            <input type="string" id="model" name="model" class="form-control text-3xl sm:text-4xl md:text-3xl lg:text-2xl p-2 mt-2 rounded-lg w-full" placeholder="ex: Model X">
+            <label for="manufacturer" class="text-3xl sm:text-4xl md:text-3xl lg:text-2xl">Manufacterer:</label>
+            <input type="string" id="manufacturer" name="manufacturer" class="form-control text-3xl sm:text-4xl md:text-3xl lg:text-2xl p-2 mt-2 rounded-lg w-full" placeholder="ex: Tesla">
+            <label for="year" class="text-3xl sm:text-4xl md:text-3xl lg:text-2xl">Year:</label>
+            <input type="int" id="year" name="year" class="form-control text-3xl sm:text-4xl md:text-3xl lg:text-2xl p-2 mt-2 rounded-lg w-full" placeholder="ex: 2020">
+            <label for="fueltype" class="text-3xl sm:text-4xl md:text-3xl lg:text-2xl">Fuel:</label>
+            <input type="string" id="fueltype" name="fueltype" class="form-control text-3xl sm:text-4xl md:text-3xl lg:text-2xl p-2 mt-2 rounded-lg w-full" placeholder="ex: Electric">
         </div>
-        <button type="submit" class="bg-blue-400 hover:bg-blue-600 text-white px-4 py-2 mt-5 rounded-lg btn btn-primary">Submit</button>
+        <button type="submit" class="text-3xl sm:text-4xl md:text-3xl lg:text-2xl bg-blue-400 hover:bg-blue-600 text-white px-4 py-2 mt-5 rounded-lg btn btn-primary">Submit</button>
     </form>
 </div>

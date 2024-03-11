@@ -32,7 +32,7 @@ class LoginTest extends TestCase
 
     }
 
-   
+
 
     public function test_user_with_incorrect_password(): void
     {
@@ -42,8 +42,8 @@ class LoginTest extends TestCase
             'email' => $user->email,
             'password' => 'wrong-password',
         ]);
-        $code = $this->followRedirects($response)->getStatusCode();
-        $this->assertEquals(200, $code);
+        $code = $this->followRedirects($response)->getStatusCode();//get the statuscode we recive when redirected
+        $this->assertEquals(200, $code);//is the statuscode we get equal to 200?
         $this->assertGuest();
     }
 
